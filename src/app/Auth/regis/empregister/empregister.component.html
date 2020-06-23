@@ -1,0 +1,180 @@
+
+<div class="row bg-light">
+    <!-- <div class="col-sm-1"></div> -->
+    <div class="col-sm-10">
+        <div class="col-sm-3"></div>
+<div class="col-sm-6 text-center">
+ <div class="alert alert-success col-sm-10" *ngIf="registrationsuccess;else failmessage">
+   <strong>{{registrationsuccess}} !!</strong>
+ </div>
+ <ng-template #failmessage>
+   <div class="alert alert-danger" *ngIf="regisfail">
+     <strong>{{regisfail}} !!</strong>
+   </div>
+ </ng-template>
+</div>
+<div class="col-sm-3"></div>
+        <div class="container mt-3">
+
+            <form class="form-horizontal" [formGroup]="EmpRegisterForm">
+                <div class="form-group">
+                    <label for="userName" class="col-sm-3 control-label">UserName</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="userName" formControlName="username" placeholder="UserName" class="form-control"  autofocus>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="col-sm-3 control-label">Password*</label>
+                    <div class="col-sm-9">
+                        <input type="password" id="password" formControlName="password" placeholder="Password" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email" class="col-sm-3 control-label">Email* </label>
+                    <div class="col-sm-9">
+                        <input type="email" formControlName="mail" id="email" placeholder="mail" class="form-control" name= "email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3">Gender</label>
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label class="radio-inline">
+                                    <input type="radio" id="femaleRadio" name="gender" value="Female" formControlName="gender">Female
+                                </label>
+                            </div>
+                            <div class="col-sm-4">
+                                <label class="radio-inline">
+                                    <input type="radio" checked id="maleRadio" name="gender" formControlName="gender" value="Male">Male
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="phoneNumber" class="col-sm-3 control-label">Phone number </label>
+                    <div class="col-sm-9">
+                        <input type="phoneNumber" id="phoneNumber" formControlName="mobile" placeholder="Phone number" class="form-control">
+                        <span class="help-block">Your phone number won't be disclosed anywhere </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="HomeTown" class="col-sm-3 control-label">HomeTown</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="HomeTown" formControlName="hometown" placeholder="Last Name" class="form-control" autofocus>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Interests(max-3):</label>
+                    <select name="interests" id="interests" class="custom-select" multiple formControlName="interests">
+                        <option value="IOT">IOT</option>
+                        <option value="AI">AI</option>
+                        <option value="ML">ML</option>
+                        <option value="WEB DEVELOPEMNT">WEB DEVELOPEMNT</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="exp" class="col-sm-3 control-label">Experience </label>
+                    <div class="col-sm-9">
+                        <input type="number" id="exp" formControlName="experience" placeholder="Exp. In Years" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3">Marital Status</label>
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label class="radio-inline">
+                                    <input type="radio"  id="singleRadio" formControlName="maritalStatus" name="maritalStatus" value="Single" >Single
+                                </label>
+                            </div>
+                            <div class="col-sm-4">
+                                <label class="radio-inline">
+                                    <input type="radio" id="marriedRadio" name="maritalStatus" formControlName="maritalStatus" value="Married" checked>Not-Single
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="nationality" class="col-sm-3 control-label">Nationality</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="nationality" formControlName="nationality"  class="form-control"   >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="languages" class="col-sm-3 control-label">Languages</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="languages" formControlName="languages"  class="form-control" value="English" >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="clocation" class="col-sm-3 control-label">Current Location</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="clocation" formControlName="currentLocation" placeholder="Current Location" class="form-control" >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="lastexp" class="col-sm-3 control-label">Last Job Experience </label>
+                    <div class="col-sm-9">
+                        <input type="number" id="lastexp" formControlName="lastjobexp" placeholder="Last Job Exp. In Years" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="desig" class="col-sm-3 control-label">Last Designation</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="desig" formControlName="lastjobDesig" placeholder="Last Designation" class="form-control"  >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Select Department</label>
+                    <select name="department" id="dep" formControlName="department">
+                        <option value="IT" selected>IT</option>
+                        <option value="Service">Service</option>
+                        <option value="Others">Others</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="reasons" class="col-sm-3 control-label">Reason For Leaving Last Job</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="reasons" formControlName="reasonsforleaving" placeholder="Not Mandatory" class="form-control"  autofocus>
+                    </div>
+                </div>
+                <!-- <div class="form-group">
+                    <label for="password" class="col-sm-3 control-label">Confirm Password*</label>
+                    <div class="col-sm-9">
+                        <input type="password" id="password" placeholder="Password" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="birthDate" class="col-sm-3 control-label">Date of Birth*</label>
+                    <div class="col-sm-9">
+                        <input type="date" id="birthDate" class="form-control">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                        <label for="Height" class="col-sm-3 control-label">Height* </label>
+                    <div class="col-sm-9">
+                        <input type="number" id="height" placeholder="Please write your height in centimetres" class="form-control">
+                    </div>
+                </div>
+                 <div class="form-group">
+                        <label for="weight" class="col-sm-3 control-label">Weight* </label>
+                    <div class="col-sm-9">
+                        <input type="number" id="weight" placeholder="Please write your weight in kilograms" class="form-control">
+                    </div>
+                </div> -->
+                 <!-- /.form-group -->
+                <!-- <div class="form-group">
+                    <div class="col-sm-9 col-sm-offset-3">
+                        <span class="help-block">*Required fields</span>
+                    </div>
+                </div> -->
+                <button type="submit" class="btn btn-primary"  (click)="registeremployee()">Register</button>
+            </form> <!-- /form -->
+        </div>
+    </div>
+    <div class="col-sm-2"></div>
+</div>

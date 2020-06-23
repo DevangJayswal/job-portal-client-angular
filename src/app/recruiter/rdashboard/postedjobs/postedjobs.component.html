@@ -1,0 +1,41 @@
+<div class="container mt-5">
+    <div class="row" *ngIf="successmsg; else nojobsmessage">
+        <div>
+            <h2 class="text-center">Total-Jobs: {{totaljobs}}</h2>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th *ngFor="let key of headers">{{key}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let job of posted" >
+                    <td>{{job.jobRole}}</td>
+                    <td>{{job.expRequired}}</td>
+                    <td>{{job.jobType}}</td>
+                    <td >{{job.postedDate}}</td>
+                    <td><button class="btn btn-success" style="width:100%;height:auto;border-radius: 45px;"
+                            disabled>Posted</button>
+                        <!-- <small>{{job.jobDetails.postedDate}}</small> -->
+                    </td>
+                    <!-- 
+                        we need to bind the id of each job to the button,we can pass direct id or "job"
+                        object if we want. 
+                        class.selected will define a classname to tr tag when the id from the route that is optioanl
+                        parameter is true;
+                        
+                    -->
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <ng-template #nojobsmessage>
+        <div >
+            <h3 class="text-center">{{nojobs}}</h3>
+            <!-- <a routerLink="/postjob">Post A Job Now</a> -->
+        </div>
+
+    </ng-template>
+    <!-- <router-outlet></router-outlet> -->
+</div>

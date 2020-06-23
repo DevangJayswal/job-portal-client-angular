@@ -1,0 +1,49 @@
+<div class="row">
+    <div class="col-sm-6"></div>
+    <div class="col-sm-6" >
+        
+        <div class="alert alert-success" *ngIf="appliedmessage; else failedmessage">{{appliedmessage}}</div>
+        <ng-template #failedmessage>
+            <div class="alert alert-danger"  *ngIf="alreadyapplied">{{alreadyapplied}}</div>
+        </ng-template>
+    </div>
+    
+</div>
+<div class="container mt-3">
+   
+    <div class="table-responsive">
+        <table class="table">
+            <thead class="bg-info">
+                <tr>
+                    <th *ngFor="let key of headers">{{key}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let job of jobs" >
+                    <td>{{job.companyName}}</td>
+                    <td>{{job.jobDetails.jobRole}}</td>
+                    <td>
+                        <span *ngFor="let skill of job.jobDetails.skills">
+                            {{skill}},
+                        </span>
+                    </td>
+                    <td>{{job.jobDetails.jobType}}</td>
+                    <td class="text-center">{{job.jobDetails.expRequired}}</td>
+                    <td><button class="btn btn-success" style="width:100%;height:auto;border-radius: 45px;"
+                            (click)="apply(job)">Apply</button>
+                        <!-- <small>{{job.jobDetails.postedDate}}</small> -->
+                    </td>
+                    <!-- 
+                        we need to bind the id of each job to the button,we can pass direct id or "job"
+                        object if we want. 
+                        class.selected will define a classname to tr tag when the id from the route that is optioanl
+                        parameter is true;
+                        
+                    -->
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+</div>

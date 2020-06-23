@@ -1,0 +1,186 @@
+<div class="container-fluid">
+  <nav class=" mt-1 navbar navbar-expand-lg bg-info navbar-dark danger-color rounded">
+    <!-- Brand -->
+    <img class="rounded-circle" src="/assets/job-logo.png" alt="somthing" id="logobrand"><a class="navbar-brand "
+      id="logo"><B>JOBS</B></a>
+    <!-- Links -->
+    <ul class="navbar-nav ml-auto">
+      <!-- Dropdown -->
+      <li class="nav-item">
+        <a routerLink="/dashboard/jobs" class="nav-link p-3"> <i class="fa fa-briefcase"></i> Dashboard</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/seeker/editprofile" class="nav-link p-3"> <i class="fa fa-pencil"></i> Edit Profile</a>
+      </li>
+      <li class="nav-item">
+        <a (click)="logout()" style="cursor: pointer;" class="nav-link p-3"> <i class="fa fa-sign-out"></i> Logout</a>
+      </li>
+      <!-- <li class="nav-item">
+          <a routerLink="/login/emp_login" class="nav-link p-3" > <i class="fa fa-lock"></i> LOGIN</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/register/emp_register" class="nav-link p-3 " ><i class="fa fa-address-book" aria-hidden="true"></i>REGISTER</a>
+        </li> -->
+      <!-- <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle p-3"  id="navbardrop" data-toggle="dropdown" style="cursor: pointer;">
+            <i class="fa fa-user"></i>Hi, {{username}}
+          </a>
+          <div class="dropdown-menu dropdown-menu-right bg-light">
+            <a class="dropdown-item p-2" (click)="gotoprofilepage()" style="cursor: pointer;">Profile</a>
+            <a class="dropdown-item p-2" (click)="logoutemployee()" style="cursor: pointer;">LOGOUT</a>
+          </div>
+        </li> -->
+    </ul>
+  </nav>
+</div>
+
+<div class="container" *ngIf="successmsg">
+  <div class="alert alert-success">
+    <strong>{{successmsg}}</strong>
+  </div>
+</div>
+<div class="container mt-3 bg-light">
+  <div class="row">
+    <div class="col-md-4 p-2">
+      <div class="col-sm-12 text-center">
+        <h1>{{profileinfo.username}}</h1>
+      </div>
+      <hr>
+      <div class="col-sm-12 text-center p-2" *ngIf="!picexists;else defaultavatar">
+        <img src="{{profileinfo.profileimage}}" alt={{profileinfo.username}} id="pimage">
+        <!-- <form>
+                  <input type="file" name="image" (change)="selectimage($event)"/>
+                </form>
+                <button type="button" (click)="upload()">upload</button> -->
+      </div>
+      <ng-template #defaultavatar>
+        <img src="../../../assets/avatar.jpg" alt="avatar" id="pimage">
+      </ng-template>
+      <input type="file" name="image" (change)="selectimage($event)" />
+      <button type="button" (click)="upload()">upload</button>
+      <br>
+      <div class="col-sm-12 p-1">
+        <small><b>Interests:</b></small>
+        <div class="col-sm-6" *ngFor="let interest of profileinfo.interests;let i=index">
+          <span>{{i+1}}.<b>{{interest}}</b></span>
+        </div>
+      </div>
+      <div class="col-sm-12 p-1">
+        <small><b>Languages:</b></small>
+        <div class="col-sm-6" *ngFor="let language of profileinfo.languages;let i=index">
+          <span>{{i+1}}.<b>{{language}}</b></span>
+        </div>
+      </div>
+      <div class="col-sm-12 p-1">
+        <small><b>HomeTown:</b></small>
+        <h6 class="ml-2">{{profileinfo.hometown}}</h6>
+      </div>
+    </div>
+    <div class="col-sm-8 p-2">
+      <div class="col-sm-12">
+        <h1>Profile Details</h1>
+        <hr>
+      </div>
+      <div class="col-sm-12">
+        <div class="container">
+          <!-- Nav tabs -->
+          <ul class="nav nav-tabs" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" data-toggle="tab" href="#basic">Basic Details</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="tab" href="#personal">Personal Details</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="tab" href="#prof">Professional Details</a>
+            </li>
+          </ul>
+
+          <!-- Tab panes -->
+          <div class="tab-content">
+            <div id="basic" class="container tab-pane active"><br>
+              <div class="col-sm-12">
+                <label for="username"><b>UserName:</b></label><br>
+                <input type="text" name="username" id="username" class="form-control" value={{profileinfo.username}}
+                  disabled>
+              </div>
+              <div class="col-sm-12">
+                <label for="mail"><b>E-Mail:</b></label><br>
+                <input type="text" name="mail" id="mail" class="form-control" value={{profileinfo.mail}} disabled>
+              </div>
+              <div class="col-sm-12">
+                <label for="mobile"><b>Mobile:</b></label><br>
+                <input type="text" name="mobile" id="mobile" class="form-control" value={{profileinfo.mobile}} disabled>
+              </div>
+              <div class="col-sm-12">
+                <label for="gender"><b>Gender:</b></label><br>
+                <input type="text" name="gender" id="gender" class="form-control" value={{profileinfo.gender}} disabled>
+              </div>
+              <!-- <div class="col-sm-12">
+                <label for="password"><b>Password:</b></label><br>
+                <input type="password" name="password" id="password" class="form-control" value={{profileinfo.password}}
+                  disabled>
+              </div> -->
+            </div>
+            <div id="personal" class="container tab-pane fade"><br>
+              <div class="col-sm-12">
+                <label for="mstatus"><b>MaritalStatus:</b></label><br>
+                <input type="text" name="mstatus" id="mstatus" class="form-control" value={{profileinfo.maritalStatus}}
+                  disabled>
+              </div>
+              <div class="col-sm-12">
+                <label for="hometown"><b>HomeTown</b></label><br>
+                <input type="text" name="hometown" id="hometown" class="form-control" value={{profileinfo.hometown}}
+                  disabled>
+              </div>
+              <div class="col-sm-12">
+                <label for="nationality"><b>Nationality:</b></label><br>
+                <input type="text" name="nationality" id="nationality" class="form-control"
+                  value={{profileinfo.nationality}} disabled>
+              </div>
+              <div class="col-sm-12">
+                <label for="currentlocation"><b>CurrentLocation:</b></label><br>
+                <input type="text" name="currentlocation" id="currentlocation" class="form-control"
+                  value={{profileinfo.currentLocation}} disabled>
+              </div>
+              <div class="col-sm-12">
+                <label for="experience"><b>Experience:</b></label><br>
+                <input type="text" name="experience" id="experience" class="form-control"
+                  value={{profileinfo.experience}} disabled>
+              </div>
+            </div>
+            <div id="prof" class="container tab-pane fade"><br>
+              <div class="col-sm-12">
+                <label for="lastjobDesig"><b>LastJob Role:</b></label><br>
+                <input type="text" name="lastjobDesig" id="lastjobDesig" class="form-control"
+                  value={{profileinfo.lastjobDesig}} disabled>
+              </div>
+              <div class="col-sm-12">
+                <label for="department"><b>Department:</b></label><br>
+                <input type="text" name="department" id="department" class="form-control"
+                  value={{profileinfo.department}} disabled>
+              </div>
+              <div class="col-sm-12">
+                <label for="reasonsforleaving"><b>Reason For Leaving Last Job:</b></label><br>
+                <input type="text" name="reasonsforleaving" id="reasonsforleaving" class="form-control"
+                  value={{profileinfo.reasonsforleaving}} disabled>
+              </div>
+              <div class="col-sm-12">
+                <div class="card">
+                  <div class="card-header bg-primary text-center">
+                    <h6>Total Jobs Applied</h6>
+                  </div>
+                  <div class="card-body text-center">
+                    <h1>{{profileinfo.appliedjobs.length}}</h1>
+                    <p><a routerLink='/dashboard/appliedjobs' style="text-decoration:none">See What?</a></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

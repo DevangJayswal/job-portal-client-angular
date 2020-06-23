@@ -1,0 +1,49 @@
+#logo
+{
+    letter-spacing: 1pt;
+    font-weight: 800;
+    padding: 5px;
+    line-height: 5px;
+}
+#logobrand{
+    width: 5%;
+    
+}
+.nav-link:hover{
+     border-left: 5px solid orange; 
+    /* animation-name: slowborder;
+    animation-timing-function: ease;
+    animation-duration: 1s; */
+   
+}
+.nav-link:active{
+   color: black;
+}
+@keyframes slowborder {
+    0% { background-color: orange;opacity: 0.2;}
+    25%{background-color: orange;opacity: 0.4;}
+    50% {background-color: orange;opacity: 0.6;}
+    75% {background-color: orange;opacity: 0.8;}
+    100%{background-color:  orange;opacity: 1;}
+  }
+.dropdown-item:hover{
+    
+    border-left: 5px solid orange;
+}
+#myInput {
+    
+    width: 100%; /* Full-width */
+    font-size: 16px; /* Increase font-size */
+    padding: 12px 20px 12px 40px; /* Add some padding */
+    border: 1px solid #ddd; /* Add a grey border */
+    margin-bottom: 12px; /* Add some space below the input */
+  }
+  #search
+  {
+    width: 100%; /* Full-width */
+    font-size: 16px; /* Increase font-size */
+    padding: 12px 20px 12px 40px; /* Add some padding */
+    border: 1px solid #ddd; /* Add a grey border */
+    margin-bottom: 12px; /* Add some space below the input */
+  }
+  

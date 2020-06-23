@@ -1,0 +1,170 @@
+<div class="container-fluid">
+    <nav class=" mt-1 navbar navbar-expand-lg bg-info navbar-dark danger-color rounded">
+      <!-- Brand -->
+      <img class="rounded-circle" src="/assets/job-logo.png" alt="somthing" id="logobrand"><a class="navbar-brand "
+        id="logo"><B>JOBS</B></a>
+      <!-- Links -->
+      <ul class="navbar-nav ml-auto">
+        <!-- Dropdown -->
+        <li class="nav-item">
+          <a routerLink="/dashboard/jobs" class="nav-link p-3" > <i class="fa fa-briefcase"></i> Dashboard</a>
+        </li>
+       <!-- <li class="nav-item">
+          <a routerLink="#" class="nav-link p-3" > <i class="fa fa-search"></i> Search</a>
+        </li> -->
+        <!-- <li class="nav-item">
+          <a routerLink="/register/emp_register" class="nav-link p-3 " ><i class="fa fa-address-book" aria-hidden="true"></i>REGISTER</a>
+        </li> -->
+        <li class="nav-item">
+          <a class="nav-link p-3"  id="navbardrop"  style="cursor: pointer;">
+           <i class="fa fa-user"></i>{{username}}
+          </a>
+          <!-- <div class="dropdown-menu dropdown-menu-right bg-light">
+            <a class="dropdown-item p-2" (click)="gotoprofilepage()" style="cursor: pointer;">PROFILE</a>
+            <a class="dropdown-item p-2" (click)="logoutemployee()" style="cursor: pointer;">LOGOUT</a>
+          </div> -->
+        </li>
+      </ul>
+    </nav>
+</div>
+<div class="container mt-3">
+    <form class="form-horizontal" [formGroup]="searchform">
+    <div class="row">
+        <div class="col-sm-3 form-group">
+            <select name="search" id="search" formControlName="searchdrop">
+                <option value="" selected>Select One Below.......</option>
+                <option value="companyname">CompanyName</option>
+                <option value="Role">JobRole</option>
+                <option value="latest">Latest Jobs</option>
+            </select>
+        </div>
+        <div class="col-sm-6 form-group">
+            <input type="text" id="myInput" formControlName="searchname"   placeholder="Search for names..">
+        </div>
+        <div class="col-sm-3">
+            <button class="btn btn-success btn-lg" (click)="search()">Search</button>
+        </div>
+       
+    </div>
+</form>
+</div>
+<div class="container" *ngIf="companymsg">
+        <div class="row" *ngIf="successmsg; else nojobsmessage">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th *ngFor="let key of headers">{{key}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let job of jobs" >
+                        <td>{{job.jobRole}}</td>
+                        <td>{{job.expRequired}}</td>
+                        <td>{{job.jobType}}</td>
+                        <td >{{job.postedDate}}</td>
+                        <td><button class="btn btn-success" style="width:100%;height:auto;border-radius: 45px;"
+                            routerLink="/dashboard/jobs">Apply</button>
+                            <!-- <small>{{job.jobDetails.postedDate}}</small> -->
+                        </td>
+                        <!-- 
+                            we need to bind the id of each job to the button,we can pass direct id or "job"
+                            object if we want. 
+                            class.selected will define a classname to tr tag when the id from the route that is optioanl
+                            parameter is true;
+                            
+                        -->
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <ng-template #nojobsmessage>
+            <div >
+                <h3 class="text-center">{{nojobs}}</h3>
+                <!-- <a routerLink="/postjob">Post A Job Now</a> -->
+            </div>
+    
+        </ng-template>
+        <!-- <router-outlet></router-outlet> -->
+</div>
+<div class="container" *ngIf="rolemsg">
+    <div class="row" *ngIf="successmsg; else nojobsmessage">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>CompanyName</th>
+                    <th *ngFor="let key of headers">{{key}}</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let job of jobs" >
+                    <td>{{job.companyName}}</td>
+                    <td>{{job.JobDetails.jobRole}}</td>
+                    <td>{{job.JobDetails.expRequired}}</td>
+                    <td>{{job.JobDetails.jobType}}</td>
+                    <td>{{job.JobDetails.postedDate}}</td>
+                    <td><button class="btn btn-success" style="width:100%;height:auto;border-radius: 45px;"
+                        routerLink="/dashboard/jobs">Apply</button>
+                        <!-- <small>{{job.jobDetails.postedDate}}</small> -->
+                    </td>
+                    <!-- 
+                        we need to bind the id of each job to the button,we can pass direct id or "job"
+                        object if we want. 
+                        class.selected will define a classname to tr tag when the id from the route that is optioanl
+                        parameter is true;
+                        
+                    -->
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <ng-template #nojobsmessage>
+        <div >
+            <h3 class="text-center">{{nojobs}}</h3>
+            <!-- <a routerLink="/postjob">Post A Job Now</a> -->
+        </div>
+
+    </ng-template>
+    <!-- <router-outlet></router-outlet> -->
+</div>
+<div class="container" *ngIf="latestmsg">
+    <div class="row" *ngIf="successmsg; else nojobsmessage">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>CompanyName</th>
+                    <th *ngFor="let key of headers">{{key}}</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let job of jobs" >
+                    <td>{{job.companyName}}</td>
+                    <td>{{job.jobDetails.jobRole}}</td>
+                    <td>{{job.jobDetails.expRequired}}</td>
+                    <td>{{job.jobDetails.jobType}}</td>
+                    <td>{{job.jobDetails.postedDate}}</td>
+                    <td><button class="btn btn-success" style="width:100%;height:auto;border-radius: 45px;"
+                            routerLink="/dashboard/jobs">Apply</button>
+                        <!-- <small>{{job.jobDetails.postedDate}}</small> -->
+                    </td>
+                    <!-- 
+                        we need to bind the id of each job to the button,we can pass direct id or "job"
+                        object if we want. 
+                        class.selected will define a classname to tr tag when the id from the route that is optioanl
+                        parameter is true;
+                        
+                    -->
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <ng-template #nojobsmessage>
+        <div >
+            <h3 class="text-center">{{nojobs}}</h3>
+            <!-- <a routerLink="/postjob">Post A Job Now</a> -->
+        </div>
+
+    </ng-template>
+    <!-- <router-outlet></router-outlet> -->
+</div>

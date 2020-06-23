@@ -1,0 +1,37 @@
+<div class="container mt-5">
+    <div class="row" *ngIf="successmsg; else nojobsmessage">
+        
+        <table class="table" >
+            <thead>
+                <tr>
+                    <th *ngFor="let key of headers">{{key}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let job of applied" >
+                    <td>{{job.companyName}}</td>
+                    <td>{{job.jobsdetails.jobRole}}</td>
+                    <td>{{job.jobsdetails.jobType}}</td>
+                    <td >{{job.jobsdetails.expRequired}}</td>
+                    <td><button class="btn btn-success" style="width:100%;height:auto;border-radius: 45px;"
+                            disabled>Applied</button>
+                        <!-- <small>{{job.jobDetails.postedDate}}</small> -->
+                    </td>
+                    <!-- 
+                        we need to bind the id of each job to the button,we can pass direct id or "job"
+                        object if we want. 
+                        class.selected will define a classname to tr tag when the id from the route that is optioanl
+                        parameter is true;
+                        
+                    -->
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <ng-template #nojobsmessage>
+        <div class="text-center">
+            <h3>{{nojobs}}</h3>
+        </div>
+    </ng-template>
+    <!-- <router-outlet></router-outlet> -->
+</div>

@@ -1,0 +1,50 @@
+<div class="conatiner mt-3 ">
+    <div class="row" *ngIf="!notapplied; else Noapplied">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th *ngFor="let key of headers">{{key}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let info of seekersInfo" >
+                    <td>{{info.details.username}}</td>
+                    
+                    <td>{{info.details.mail}}</td>
+                    <td>{{info.details.mobile}}</td>
+                    <td >{{info.details.currentLocation}}</td>
+                    <td>
+                        <span *ngFor="let interest of info.details.interests">
+                            {{interest}},
+                        </span>
+                    </td>
+                    
+                    <td>{{info.appliedfor}}</td>
+                    <td>
+                        <button type="button" class="btn btn-success" (click)="call_for_interview(info)">
+                            <span class="fa fa-check"></span>
+                          </button>
+                          <button type="button" class="btn btn-danger" (click)="reject(info)">
+                            <span class="fa fa-close"></span>
+                          </button>
+                        <!-- <button class="gly" style="width:100%;height:auto;border-radius: 45px;"
+                        (click)="call_for_interview(info)">Schedule</button> -->
+                    <!-- <small>{{job.jobDetails.postedDate}}</small> -->
+                </td>
+                    <!-- 
+                        we need to bind the id of each job to the button,we can pass direct id or "job"
+                        object if we want. 
+                        class.selected will define a classname to tr tag when the id from the route that is optioanl
+                        parameter is true;
+                        
+                    -->
+                </tr>
+            </tbody>
+        </table>
+    </div>
+      <ng-template #Noapplied>
+          <div class="text-center text-primary">
+              <h2>{{notapplied}}</h2>
+          </div>
+      </ng-template>
+</div>

@@ -1,0 +1,75 @@
+<div class="container-fluid">
+    <nav class=" mt-1 navbar navbar-expand-lg bg-info navbar-dark danger-color rounded">
+      <!-- Brand -->
+      <img class="rounded-circle" src="/assets/job-logo.png" alt="somthing" id="logobrand"><a class="navbar-brand "
+        id="logo"><B>JOBS</B></a>
+      <!-- Links -->
+      <ul class="navbar-nav ml-auto">
+        <!-- Dropdown -->
+        <li class="nav-item">
+          <a routerLink="/rdashboard/postedjobs" class="nav-link p-3" > <i class="fa fa-lock"></i> Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a (click)="logoutRecruiter()" class="nav-link p-3" style="cursor: pointer;" > <i class="fa fa-sign-in"></i> &nbsp;Logout</a>
+        </li>
+        <li class="nav-item">
+            <a  id="companyname" class="nav-link p-3" ><strong>{{companyname}}</strong></a>
+          </li>
+      </ul>
+    </nav>
+  </div>
+<div class="container mt-5 bg-light">
+    <div class="row">
+        <div *ngIf="postedMsg;else alreadyposted">
+            <div class="alert alert-success"><strong>{{postedMsg}}</strong></div>
+            <ng-template #alreadyposted>
+                <div class="alert alert-danger"><strong>{{alreadyposted}}</strong></div>
+            </ng-template>
+        </div>
+        
+        <div class="col-md-12">
+            <form class="form-horizontal" [formGroup]="postjobForm">
+                <div class=" form-group">
+                    <label for="jobrole" class="col-sm-3 control-label"><b>JobRole</b></label>
+                    <input type="text" name="jobrole" id="jobrole" formControlName="jobRole" class="form-control" placeholder="JOBROLE">
+                </div>
+                <div class=" form-group">
+                    <label for="expRequired" class="col-sm-3 control-label"><b>Experience</b></label>
+                    <input type="text" name="expRequired" id="expRequired" formControlName="expRequired" class="form-control" placeholder="Exp">
+                </div>
+                <div class=" form-group">
+                    <label for="skills" class="col-sm-3 control-label"><b>Skills</b></label>
+                    <input type="text" name="skills" id="skills" formControlName="skills" class="form-control" placeholder="Skills">
+                </div>
+                <div class=" form-group">
+                    <label for="education" class="col-sm-3 control-label"><b>JobRole</b></label>
+                    <input type="text" name="education" id="education" formControlName="educationalQualifications" class="form-control" placeholder="Education">
+                </div>
+                <div class=" form-group">
+                    <label for="jobDescription" class="col-sm-3 control-label"><b>Job Description</b></label>
+                    <input type="text" name="jobDescription" id="jobDescription" formControlName="jobDescription" class="form-control" placeholder="Description">
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3"><b>JobType</b></label>
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label class="radio-inline">
+                                    <input type="radio" id="internship" name="jobType" value="Internship" formControlName="jobType">Internship
+                                </label>
+                            </div>
+                            <div class="col-sm-4">
+                                <label class="radio-inline">
+                                    <input type="radio" checked id="permanent" name="jobType" formControlName="jobType" value="Full-Time">Full Time
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-success form-control" (click)="postajob()"><strong>Post Job</strong></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

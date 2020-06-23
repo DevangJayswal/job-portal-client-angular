@@ -1,0 +1,14 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <h2>Login</h2>
+    <p>Select the respective tabs!!!</p>
+    <ul class="nav nav-tabs">
+      <li class="nav-item ">
+        <a class="nav-link" type="button"  style="cursor:pointer" [ngClass]="tabset ? 'active':'disabled'" (click)="employeeloginpage()">Employee</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " style="cursor:pointer" [ngClass]="tabset?'active':'inactive'" (click)="recruiterloginpage()">Recruiter</a>
+      </li>
+    </ul>
+    <router-outlet></router-outlet>
+  </div>

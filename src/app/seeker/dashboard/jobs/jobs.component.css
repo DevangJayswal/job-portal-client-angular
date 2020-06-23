@@ -1,0 +1,11 @@
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+td{
+font-size: large;
+font-family: monospace;
+font-weight: bold;
+}
+
+

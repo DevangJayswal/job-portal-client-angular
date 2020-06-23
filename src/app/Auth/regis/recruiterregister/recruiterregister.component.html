@@ -1,0 +1,61 @@
+<div class="row bg-light">
+    <!-- <div class="col-sm-1"></div> -->
+    <div class="col-sm-10">
+        <div class="col-sm-3"></div>
+<div class="col-sm-6 text-center">
+ <div class="alert alert-success col-sm-10" *ngIf="registrationsuccess;else failmessage">
+   <strong>{{registrationsuccess}} !!</strong>
+ </div>
+ <ng-template #failmessage>
+   <div class="alert alert-danger" *ngIf="regisfail">
+     <strong>{{regisfail}} !!</strong>
+   </div>
+ </ng-template>
+</div>
+<div class="col-sm-3"></div>
+        <div class="container mt-3">
+
+            <form class="form-horizontal" [formGroup]="RecruiterRegisterForm">
+                <div class="form-group">
+                    <label for="companyname" class="col-sm-3 control-label">CompanyName</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="companyname" formControlName="companyName" placeholder="companyname" class="form-control"  autofocus>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="col-sm-3 control-label">Password*</label>
+                    <div class="col-sm-9">
+                        <input type="password" id="password" formControlName="password" placeholder="Password" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email" class="col-sm-3 control-label">Email* </label>
+                    <div class="col-sm-9">
+                        <input type="email" formControlName="companyMail" id="email" placeholder="mail" class="form-control" name= "email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="industry" class="col-sm-3 control-label">Industry</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="industry" formControlName="industryType" placeholder="Last Designation" class="form-control"  >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="exp" class="col-sm-3 control-label">Experience </label>
+                    <div class="col-sm-9">
+                        <input type="number" id="exp" formControlName="yearsofExp" placeholder="Exp. In Years" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="about" class="col-sm-3 control-label">About</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="about" formControlName="About" placeholder="Not Mandatory" class="form-control"  autofocus>
+                    </div>
+                </div>
+               
+                <button type="submit" class="btn btn-primary"  (click)="register_rectuiter()">Register</button>
+            </form> <!-- /form -->
+        </div>
+    </div>
+    <div class="col-sm-2"></div>
+</div>

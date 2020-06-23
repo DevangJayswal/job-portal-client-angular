@@ -1,0 +1,120 @@
+<div class="container-fluid">
+    <nav class=" mt-1 navbar navbar-expand-lg bg-info navbar-dark danger-color rounded">
+      <!-- Brand -->
+      <img class="rounded-circle" src="/assets/job-logo.png" alt="somthing" id="logobrand"><a class="navbar-brand "
+        id="logo"><B>JOBS</B></a>
+      <!-- Links -->
+      <ul class="navbar-nav ml-auto">
+        <!-- Dropdown -->
+        <li class="nav-item">
+          <a routerLink="/dashboard/jobs" class="nav-link p-3"> <i class="fa fa-briefcase"></i> Dashboard</a>
+        </li>
+        <li class="nav-item">
+            <a routerLink="/seeker/eprofile" class="nav-link p-3"> <i class="fa fa-briefcase"></i>Profile</a>
+          </li>
+        <!-- <li class="nav-item">
+            <a routerLink="/login/emp_login" class="nav-link p-3" > <i class="fa fa-lock"></i> LOGIN</a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="/register/emp_register" class="nav-link p-3 " ><i class="fa fa-address-book" aria-hidden="true"></i>REGISTER</a>
+          </li> -->
+        <!-- <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle p-3"  id="navbardrop" data-toggle="dropdown" style="cursor: pointer;">
+              <i class="fa fa-user"></i>Hi, {{username}}
+            </a>
+            <div class="dropdown-menu dropdown-menu-right bg-light">
+              <a class="dropdown-item p-2" (click)="gotoprofilepage()" style="cursor: pointer;">Profile</a>
+              <a class="dropdown-item p-2" (click)="logoutemployee()" style="cursor: pointer;">LOGOUT</a>
+            </div>
+          </li> -->
+      </ul>
+    </nav>
+</div>
+<div class="container-fluid">
+  <div class="col-sm-12">
+    <h1>Profile Details</h1>
+    <hr>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <form  class="form-horizontal" [formGroup]="EmpProfileForm">
+    
+        
+         
+        <div class="col-sm-12 form-group">
+          <label for="username"><b>UserName:</b></label><br>
+          <input type="text" name="username" formControlName="username" id="username" class="form-control" value={{profileinfo.username}}
+            >
+        </div>
+        <div class="col-sm-12 form-group">
+          <label for="mail"><b>E-Mail:</b></label><br>
+          <input type="text" name="mail" formControlName="mail" id="mail" class="form-control" value={{profileinfo.mail}} >
+        </div>
+        <div class="col-sm-12 form-group">
+          <label for="mobile"><b>Mobile:</b></label><br>
+          <input type="text" name="mobile" id="mobile" formControlName="mobile" class="form-control" value={{profileinfo.mobile}} >
+        </div>
+        <div class="col-sm-12 form-group">
+          <label for="gender"><b>Gender:</b></label><br>
+          <input type="text" name="gender" id="gender" formControlName="gender" class="form-control" value={{profileinfo.gender}} >
+        </div>
+        <div class="col-sm-12 form-group">
+          <label for="password"><b>Update Password:</b></label><br>
+          <input type="password" name="password" id="password" formControlName="password"  class="form-control" 
+            >
+        </div>
+        <div class="col-sm-12 form-group">
+          <label for="mstatus"><b>MaritalStatus:</b></label><br>
+          <input type="text" name="mstatus" id="mstatus" formControlName="maritalStatus" class="form-control" value={{profileinfo.maritalStatus}}
+            >
+        </div>
+        <div class="col-sm-12 form-group">
+          <label for="hometown"><b>HomeTown</b></label><br>
+          <input type="text" name="hometown" formControlName="hometown" id="hometown" class="form-control" value={{profileinfo.hometown}}
+            >
+        </div>
+        <div class="col-sm-12 form-group">
+          <label for="nationality"><b>Nationality:</b></label><br>
+          <input type="text" name="nationality" formControlName="nationality" id="nationality" class="form-control"
+            value={{profileinfo.nationality}} >
+        </div>
+        <div class="col-sm-12 form-group">
+          <label for="currentlocation"><b>CurrentLocation:</b></label><br>
+          <input type="text" name="currentlocation" formControlName="currentLocation" id="currentlocation" class="form-control"
+            value={{profileinfo.currentLocation}} >
+        </div>
+        <div class="col-sm-12 form-group">
+          <label for="experience"><b>Experience:</b></label><br>
+          <input type="text" name="experience" formControlName="experience" id="experience" class="form-control"
+            value={{profileinfo.experience}} >
+        </div>
+      
+      
+        <div class="col-sm-12 form-group">
+          <label for="lastjobDesig"><b>LastJob Role:</b></label><br>
+          <input type="text" name="lastjobDesig" formControlName="lastjobDesig" id="lastjobDesig" class="form-control"
+            value={{profileinfo.lastjobDesig}} >
+        </div>
+        <div class="col-sm-12 form-group">
+          <label for="department"><b>Department:</b></label><br>
+          <input type="text" name="department" formControlName="department" id="department" class="form-control"
+            value={{profileinfo.department}} >
+        </div>
+        <div class="col-sm-12 form-group">
+          <label for="reasonsforleaving"><b>Reason For Leaving Last Job:</b></label><br>
+          <input type="text" name="reasonsforleaving" formControlName="reasonsforleaving" id="reasonsforleaving" class="form-control"
+            value={{profileinfo.reasonsforleaving}} >
+        </div>
+        <div class="col-sm-12 form-group">
+          <label for="interests"><b>Interests:</b></label><br>
+          <input type="text" name="interests" formControlName="interests" id="interests" class="form-control"
+            value={{profileinfo.interests}} >
+        </div>
+        <div class="col-sm-12">
+          <button class="btn btn-success" (click)="updateprofile()">Save Changes</button>
+        </div>   
+</form>
+    </div>
+  </div>
+
+  </div>

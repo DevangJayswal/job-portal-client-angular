@@ -1,0 +1,41 @@
+<!-- <app-navbar></app-navbar> -->
+<div class="row" style="margin-top:40px; padding:20px; background-color:#eff0f2;border-radius:15px;
+-webkit-box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.2);
+-moz-box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.2);
+box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.2);">
+<div class="col-sm-3"></div>
+<div class="col-sm-6 text-center">
+ <div class="alert alert-success col-sm-10" *ngIf="loginsuccess;else failmessage">
+   <strong>{{loginsuccess}} !!</strong>
+ </div>
+ <ng-template #failmessage>
+   <div class="alert alert-danger" *ngIf="loginfail">
+     <strong>{{loginfail}} !!</strong>
+   </div>
+ </ng-template>
+</div>
+<div class="col-sm-3"></div>
+<div class="col-sm-2"></div>
+  <div class="col-sm-8">
+    <form [formGroup]="loginForm">
+      <div class="form-group">
+        <label for="exampleInputEmail1">CompanyName</label>
+        <input formControlName="companyName" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter companyName">
+       </div>
+      <div *ngIf="form.companyName.touched">
+        <p class="alert alert-danger" *ngIf="form.companyName.errors?.required" >CompanyName is required</p>
+      </div>
+      <div class="form-group">
+        <label for="passwordInput">Password</label>
+        <input formControlName="password" type="password" class="form-control" id="passwordInput" aria-describedby="passHelp" placeholder="password">
+      </div>
+      <div *ngIf="form.password.touched">
+        <p class="alert alert-danger" *ngIf="form.password.errors?.required" >Password is required</p>
+      </div>
+      <div class="form-group" style="text-align:center;">
+          <button type="button" class="btn btn-dark" (click)="login()">Log in</button>
+          <button type="button" class="btn btn-secondary" (click)="moveToRegister()">Register</button>
+      </div>
+    </form>
+  </div>
+</div>
