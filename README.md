@@ -1,5 +1,8 @@
 # Portal
 
+You can find overview of this project on my YouTube channel. 
+https://www.youtube.com/watch?v=zcmXMIBlUUE
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.20.
 
 ## Development server
